@@ -12,7 +12,7 @@ outputs:
   - {name: output_model_uri, type: {GcsPath: {data_type: Keras model}}, description: 'GCS path where the trained model has been saved. The model (topology + weights + optimizer state) is saved in HDF5 format and can be loaded back by calling keras.models.load_model'} #Remove GcsUri and make it a proper output once artifact passing support is checked in.
 implementation:
   container:
-    image: gcr.io/ml-pipeline/sample/keras/train_classifier
+    image: rexadus/pipeline-training
     command: [python3, /pipelines/component/src/train.py]
     args: [
       --training-set-features-path, {inputValue: training_set_features_path},
